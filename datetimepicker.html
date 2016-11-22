@@ -8,11 +8,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" type="text/css" href="/stylesheets/jquery.datetimepicker.min.css">
+
+        <style type="text/css">
+            input[type='text'] {
+                background-image: url(images/calendar.png);
+                background-position: 150px 1px;
+                background-repeat: no-repeat;
+                background-size: 16px 16px;
+            }
+        </style>
     </head>
     <body>
         <h1>Date-Time Picker Demo</h1>
 
-        <input type="text" id="meetingPicker" />
+        <input type="text" id="meetingPicker">
 
         <input type="hidden" id="hdnMonth" name="Month" value="">
         <input type="hidden" id="hdnDay" name="Day" value="">
@@ -32,11 +41,11 @@
                     formatTime:'g:i A', 
                     format: 'd/m/Y h:i A',
                     step: 15,
-                    minTime: new Date(),
+                    // minTime: new Date(),
                     minDate: new Date(),
                     startDate: new Date(),
                     onSelectTime: function(current_time, $input) {
-                        var regex = /(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{2}):(\d{2})\s+(AM|PM)/g;
+                        var regex = /(\d{1,2})\/(\d{1,2})\/(\d{4})\s+(\d{2}):(\d{2})\s+(AM|PM)/g;   /*RegEx to parse Date-Time selected*/
                         var match = regex.exec($input.val());
 
                         $("#hdnDay").val(match[1]);
